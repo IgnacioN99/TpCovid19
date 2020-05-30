@@ -13,5 +13,5 @@ ylabel('Personas')
 grid on
 title('Ajuste Exponencial Argentina')
 legend({'Infectados','Ajuste Exponencial'},'Location','northwest')
-annotation('textbox',[0.875 0.2 0.2 0.2],'string',{'Y='+p(1)+'e^'+p(2)+'x'},'edgecolor','w','linewidth',0,'fitboxtotext','off');
+##annotation('textbox',[0.875 0.2 0.2 0.2],'string',{'Y='+p(1)+'e^'+p(2)+'x'},'edgecolor','w','linewidth',0,'fitboxtotext','off');
 hold off
