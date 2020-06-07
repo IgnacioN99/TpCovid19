@@ -15,14 +15,30 @@
 ## <https://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*- 
-## @deftypefn {} {@var{retval} =} Diferenciacion (@var{input1}, @var{input2})
+## @deftypefn {} {@var{retval} =} exponencial (@var{input1}, @var{input2})
 ##
 ## @seealso{}
 ## @end deftypefn
 
 ## Author: Nacho <Nacho@NACH-DESKTOP>
-## Created: 2020-06-05
+## Created: 2020-06-06
 
-function retval = Diferenciacion (input1, input2)
-  D=@(x)y(1)+y(2)*x+y(3)*x^2
+
+function tabla = exponencial (Infectados)
+  dias=[{'28/03','30/03','31/03','03/04','05/04','07/04','09/04','17/04','01/03','03/05'}]
+  x=[0,2,3,6,8,10,12,20,34,36];
+  p=polyfit(x,log(Infectados),1);
+  fprintf('exponente B= %2.3f\n',p(1));
+  fprintf('coeficiente A = %3.3f\n',exp(p(2)));
+  plot(x,Infectados,'ro','markersize',4,'markerfacecolor','r');hold on;
+  z=@(x) exp(p(2))*exp(x*p(1));
+  tabla={'Funcion exponencial','A','B';func2str(z),exp(p(2)),p(1)}
+  fplot(z,[x(1),x(end)],'k-')
+  xticks(x)
+  xticklabels(dias)
+  xlabel('Dias')
+  ylabel('Personas')
+  grid on
+  title('Ajuste Exponencial Argentina')
+  legend({'Infectados','Ajuste Exponencial'},'Location','northwest')
 endfunction
