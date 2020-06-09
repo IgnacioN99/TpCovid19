@@ -15,14 +15,21 @@
 ## <https://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*- 
-## @deftypefn {} {@var{retval} =} Diferenciacion (@var{input1}, @var{input2})
+## @deftypefn {} {@var{retval} =} asd (@var{input1}, @var{input2})
 ##
 ## @seealso{}
 ## @end deftypefn
 
 ## Author: Nacho <Nacho@NACH-DESKTOP>
-## Created: 2020-06-05
+## Created: 2020-06-08
 
-function retval = Diferenciacion (input1, input2)
-  D=@(x)y(1)+y(2)*x+y(3)*x^2
+function Pn = asd (X,y)
+  x=[0,2,3,6,8,10,12,20,34,36];
+  P=newton(x,y)
+  aux=1;
+  Pn=0;
+  for i=1:(length(x)-1)
+    Pn=Pn+P(i)*aux;
+    aux=aux.*(X-x(i));
+  end
 endfunction
