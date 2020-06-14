@@ -35,7 +35,6 @@ printf("Chile \n");;
 y=xlsread('covid19.xlsx','Chile','C2:C11')';
 figure;
 y=xlsread('covid19.xlsx','Chile','C2:C11')';
-figure;
 xlswrite('covid19.xlsx',polinomio(y,'Muertes','rx','k-'),'Chile','A17')
 hold on;
 
@@ -62,7 +61,6 @@ printf("Brasil\n");
 y=xlsread('covid19.xlsx','Brasil','C2:C11')';
 figure;
 y=xlsread('covid19.xlsx','Brasil','C2:C11')';
-figure;
 xlswrite('covid19.xlsx',polinomio(y,'Muertes','rx','k-'),'Brasil','A17')
 hold on;
 

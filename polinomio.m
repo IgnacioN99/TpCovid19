@@ -1,3 +1,4 @@
+
 ## Copyright (C) 2020 Nacho
 ## 
 ## This program is free software: you can redistribute it and/or modify it
@@ -32,6 +33,6 @@ function tabla = polinomio (datos,tipo,colorPunto,colorLinea)
   z=@(dias) polyval(a,dias);
   
   fplot(z,[dias(1),dias(end)],colorLinea),hold on;
-  tabla={tipo,'a0','a1','a2'; '',a(1),a(2),a(3)}
+  tabla={tipo,'a0','a1','a2'; '',a(3),a(2),a(1)}
   hold on;
 endfunction

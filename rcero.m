@@ -15,23 +15,27 @@
 ## <https://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*- 
-## @deftypefn {} {@var{retval} =} grafico (@var{input1}, @var{input2})
+## @deftypefn {} {@var{retval} =} rcero (@var{input1}, @var{input2})
 ##
 ## @seealso{}
 ## @end deftypefn
 
 ## Author: Nacho <Nacho@NACH-DESKTOP>
-## Created: 2020-06-04
+## Created: 2020-06-12
 
-function null = grafico (Muertes,Infectados,Recuperados,pais)
-dias=[0,2,3,6,8,10,12,20,34,36];
-plot(dias,Muertes,'ro-'), hold on;
-plot(dias,Infectados,'go-'),hold on;
-plot(dias,Recuperados,'bo-'), title(pais);
-legend('Muertos','Infectados','Recuperados','Location','northwest');
-xticks(dias);
-xticklabels({'28/03','30/03','31/03','03/04','05/04','07/04','09/04','17/04','01/05','03/05'});
-xlabel('dias')
-ylabel('Personas')
-grid off
+function tabla = rcero (rango)
+  beta=[0.05 0.9]
+  gama=[0.05 0.5]
+  r0Min=@(t) beta(1)/(gama(2)+t)
+  r0Max=@(t) beta(2)/(gama(1)+t);
+  alfa=xlsread('covid19.xlsx','Decesos',rango)
+  tabla=zeros(length(alfa),2)
+  for(i=1:length(alfa))
+    tabla(i,1)=r0Max(alfa(i))
+    tabla(i,2)=r0Min(alfa(i))
+  endfor
+  figure;
+  plot(alfa,r0Min(alfa),'-ko')
+  hold on;
+  plot(alfa,r0Max(alfa),'-ro')
 endfunction
